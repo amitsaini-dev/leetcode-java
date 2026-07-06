@@ -1,9 +1,9 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        //step 1 to find longest sub array
-        int idx = -1;
+        //Step one to find longest subarray 
         int i = nums.length - 2;
         int j = nums.length - 1;
+        int idx = -1;
 
         while (i >= 0) {
             if (nums[i] < nums[j]) {
@@ -13,7 +13,6 @@ class Solution {
             i--;
             j--;
         }
-
         if (idx == -1) {
             i = 0;
             j = nums.length - 1;
@@ -26,9 +25,7 @@ class Solution {
             }
             return;
         }
-
-        //step 2 replacing the smallest element than nums[idx] with nums[idx]
-        for (i = nums.length - 1; i > idx; i--) {
+        for(i = nums.length - 1; i > idx; i--) {
             if (nums[i] > nums[idx]) {
                 int temp = nums[idx];
                 nums[idx] = nums[i];
@@ -37,7 +34,6 @@ class Solution {
             }
         }
 
-        //reverse than array from idx
         i = idx + 1;
         j = nums.length - 1;
         while (i < j) {
