@@ -1,23 +1,46 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int n = nums.length / 3;
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i])) {
-                int val = map.get(nums[i]);
-                map.put(nums[i], val + 1);
-            } else {
-                map.put(nums[i], 1);
-            }
 
-        }
+        List<Integer> list=new ArrayList<>();
 
-        for (int i = 0; i < nums.length; i++) {
-            if (map.get(nums[i]) > n) {
-                set.add(nums[i]);
-            }
+       int el1=Integer.MIN_VALUE;
+       int el2=Integer.MAX_VALUE;
+       int count1=0;
+       int count2=0;
+
+       for(int i=0;i<nums.length;i++){
+
+        if(count1==0 && nums[i]!=el2){
+            el1=nums[i];
+            count1=1;
         }
-        return new ArrayList<>(set);
+        else if(count2==0 && nums[i]!=el1){
+            el2=nums[i];
+            count2=1;
+        }
+        else if(nums[i]==el1) count1++;
+        else if(nums[i]==el2) count2++;
+        else{
+            count1--;
+            count2--;
+        }
+       }
+
+       int c1=0;
+       int c2=0;
+
+       for(int i=0;i<nums.length;i++){
+        if(nums[i]==el1) c1++;
+        else if(nums[i]==el2) c2++;
+       }
+
+       if(c1>nums.length/3){
+        list.add(el1);
+       }
+       if(c2>nums.length/3){
+        list.add(el2);
+       }
+
+       return list;
     }
 }
