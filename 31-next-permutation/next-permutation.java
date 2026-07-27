@@ -9,30 +9,30 @@ class Solution {
         }
 
         if(idx==-1){
-            int i=0;
-            int j=nums.length-1;
-
-            while(i<j){
-                int temp=nums[i];
-                nums[i]=nums[j];
-                nums[j]=temp;
-                i++;
-                j--;
+            int left=0;
+            int right=nums.length-1;
+            while(left<right){
+                int temp=nums[left];
+                nums[left]=nums[right];
+                nums[right]=temp;
+                left++;
+                right--;
             }
             return;
         }
 
         for(int i=nums.length-1;i>idx;i--){
             if(nums[i]>nums[idx]){
-                int temp=nums[i];
-                nums[i]=nums[idx];
-                nums[idx]=temp;
+                int temp=nums[idx];
+                nums[idx]=nums[i];
+                nums[i]=temp;
                 break;
             }
         }
-
+        
         int left=idx+1;
         int right=nums.length-1;
+
         while(left<right){
             int temp=nums[left];
             nums[left]=nums[right];
@@ -40,5 +40,6 @@ class Solution {
             left++;
             right--;
         }
+
     }
 }
