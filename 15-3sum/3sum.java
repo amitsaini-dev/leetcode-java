@@ -21,14 +21,13 @@ class Solution {
                     l.add(nums[left]);
                     l.add(nums[right]);
                     list.add(l);
-
-                    while (left < right && nums[right] == nums[right - 1])
-                        right--;
-                    while (left < right && nums[left] == nums[left + 1])
-                        left++;
-
                     left++;
                     right--;
+                    while (left < right && nums[right] == nums[right +1])
+                        right--;
+                    while (left < right && nums[left] == nums[left - 1])
+                        left++;
+
                 } else if (sum > 0) {
                     right--;
                 } else {
